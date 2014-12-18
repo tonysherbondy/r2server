@@ -27,6 +27,17 @@ router.use(function(req, res, next) {
   next();
 });
 
+router.route('/judges/:judge_id')
+
+  .get(function (req, res) {
+    Judge.findById(req.params.judge_id, function (err, judge) {
+      if (err) {
+        res.send(err);
+      }
+      res.json(judge);
+    });
+  });
+
 router.route('/judges')
 
   // Get all judges
