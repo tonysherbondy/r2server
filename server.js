@@ -22,6 +22,23 @@ var port = process.env.PORT || 3000; 		// set our port
 // =============================================================================
 var router = express.Router(); 				// get an instance of the express Router
 
+router.use(function(req, res, next) {
+  console.log('Something happened');
+  next();
+});
+
+router.route('/judges')
+  .post(function (req, res) {
+    var judge = new Judge();
+    judge.name = req.body.name;
+    judge.save(function (err) {
+      if (err) {
+        res.send(err);
+      }
+      res.json({message: "Judge created!" });
+    });
+  });
+
 // test route to make sure everything is working
 // (accessed at GET http://localhost:3000/api)
 router.get('/', function(req, res) {
