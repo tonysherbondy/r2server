@@ -28,6 +28,18 @@ router.use(function(req, res, next) {
 });
 
 router.route('/judges')
+
+  // Get all judges
+  .get(function (req, res) {
+    Judge.find(function (err, judges) {
+      if (err) {
+        res.send(err);
+      }
+      res.json(judges);
+    });
+  })
+
+  // Create judge
   .post(function (req, res) {
     var judge = new Judge();
     judge.name = req.body.name;
