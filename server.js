@@ -6,6 +6,11 @@ var express    = require('express'); 		// call express
 var app        = express(); 				// define our app using express
 var bodyParser = require('body-parser');
 
+// database setup
+var mongoose   = require('mongoose');
+mongoose.connect('mongodb://localhost/r2db');
+var Judge = require('./app/models/judge');
+
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
