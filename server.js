@@ -29,6 +29,18 @@ router.use(function(req, res, next) {
 
 router.route('/judges/:judge_id')
 
+  .delete(function (req, res) {
+    Judge.remove(
+      {'_id': req.params.judge_id},
+      function (err, judge) {
+        if (err) {
+          res.send(err);
+        }
+        res.json({message: "Judge deleted!"});
+      }
+    );
+  })
+
   .get(function (req, res) {
     Judge.findById(req.params.judge_id, function (err, judge) {
       if (err) {
