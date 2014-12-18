@@ -36,6 +36,22 @@ router.route('/judges/:judge_id')
       }
       res.json(judge);
     });
+  })
+
+  .put(function (req, res) {
+    Judge.findById(req.params.judge_id, function (err, judge) {
+      if (err) {
+        res.send(err);
+      }
+
+      judge.name = req.body.name;
+      judge.save(function (err) {
+        if (err) {
+          res.send(err);
+        }
+        res.json({message: "Judge updated!" });
+      });
+    });
   });
 
 router.route('/judges')
