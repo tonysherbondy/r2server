@@ -2,6 +2,9 @@
   "name": "r2server",
   "main": "server.js",
   "repository": "https://github.com/tonysherbondy/r2server.git",
+  "engines": {
+    "node": "0.10.35"
+  },
   "dependencies": {
     "express": "~4.0.0",
     "mongoose": "~3.6.13",
