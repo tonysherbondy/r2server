@@ -1,4 +1,4 @@
-# R2 API Server
+# R2 API Server and Client
 
 Serving up a delicious nodey API.
 
